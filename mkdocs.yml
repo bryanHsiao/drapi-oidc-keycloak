@@ -28,7 +28,8 @@ theme:
     - search.suggest
 
 nav:
-  - OIDC 登入完整重現: README.md
+  - 實作步驟（SOP）: README.md
+  - 環境與架構: 環境與架構.md
   - HTTPS + 主機名設定: HTTPS-主機名設定.md
   - 憑證信任重現與排查: 憑證信任重現與排查.md
   - certstore 能耐研究: certstore/README.md

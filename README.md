@@ -7,48 +7,13 @@
 
 | 文件 | 內容 |
 |------|------|
-| 本檔 `README.md` | 從零重現 OIDC 登入（階段一～六）＋踩雷總表 |
+| 本檔 `README.md` | 實作步驟（階段一～六）＋踩雷總表＋成果 |
+| [`環境與架構.md`](環境與架構.md) | 測試環境與網路架構圖 |
 | [`HTTPS-主機名設定.md`](HTTPS-主機名設定.md) | DRAPI 改用 HTTPS + 主機名（PEM 憑證、Keycloak redirect/CORS 連動） |
 | [`憑證信任重現與排查.md`](憑證信任重現與排查.md) | **重點**：重現 `Error fetching token`，證實 DRAPI 對外信任 = **JVM cacerts** |
 | [`certstore/README.md`](certstore/README.md) | certstore.nsf 能耐實測：DRAPI/Domino HTTP inbound 可用、outbound 不行；HTTP 需 FQDN |
 
----
-
-## 成果
-
-從零到 OIDC 登入成功、身分對應、管理員授權全部跑通：
-
-![登入成功，無 403，管理功能可用](images/12-success-overview.jpeg)
-
----
-
-## 環境
-
-| 項目 | 內容 |
-|------|------|
-| Domino server (DRAPI) | **本機 Windows**（非 WSL），`http://127.0.0.1:8880/`，**Domino 12.0.2**、DRAPI v1.1.7 |
-| 瀏覽器 | 本機 Windows |
-| IdP | **Keycloak 26**，裝在新建的 WSL Ubuntu distro `Keycloak-OIDC` |
-
-![DRAPI 首頁 v1.1.7](images/01-drapi-home.png)
-
-**關鍵網路觀念**：WSL2 所有 distro 共用同一個輕量 VM 與 localhost。Windows 上的 DRAPI 與瀏覽器都可連到 WSL 裡的 Keycloak —— **但有個大坑（見下方階段四）**：`localhost` 在 IPv4/IPv6 行為不一致。
-
-```mermaid
-flowchart LR
-    subgraph WIN["Windows 主機"]
-        B["瀏覽器"]
-        D["DRAPI :8880"]
-    end
-    subgraph WSL["WSL distro：Keycloak-OIDC"]
-        K["Keycloak :8080 / :8443"]
-    end
-    B -->|"操作 Admin UI"| D
-    B -->|"登入時整頁跳轉"| K
-    D -->|"後端抓 metadata / 換 token"| K
-```
-
-> ⚠️ `DRAPI → Keycloak` 這條（providerUrl）**必須用 WSL 實際 IP，不可用 localhost**（見階段四踩雷點 2）。
+> 📐 測試環境與網路架構圖見 [環境與架構](環境與架構.md)。
 
 ---
 
@@ -260,6 +225,14 @@ DRAPI `userIdentifier: "email"` → 用 token 的 email 去 Domino Directory 找
 | 3 | `Error initiating authorization request` | localStorage 殘留壞掉的 `oidc_config_url`；清掉重來 |
 | 4 | 登入成功但 403 `need $SETUP/keepconfigadmin` | scope 沒掛到既有 client keepadminui；手動加 |
 | — | （誤區）想在 IdP 設 CORS | OIDC 登入是 redirect + server 對 server，不受 CORS 管；CORS 設在 DRAPI 端 |
+
+---
+
+## 成果
+
+從零到 OIDC 登入成功、身分對應、管理員授權全部跑通：
+
+![登入成功，無 403，管理功能可用](images/12-success-overview.jpeg)
 
 ---
 
