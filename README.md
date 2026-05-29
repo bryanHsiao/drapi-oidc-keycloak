@@ -123,6 +123,18 @@ bin/kc.sh start-dev
 }
 ```
 
+### 關鍵欄位速覽
+
+| 欄位 | 作用 |
+|------|------|
+| **`adminui`** | **讓此 provider 出現在 Admin UI 登入下拉的開關**（`active:true` + 用哪個 `client_id`，通常 `keepadminui`）。**沒有這段，登入下拉就看不到它**（見踩雷點 1）。 |
+| `providerUrl` | DRAPI **後端要連得到**的 IdP 位址（抓 metadata、換 token）。連不到 provider 就載入失敗、也不會出現在下拉（見踩雷點 2，不能用 localhost）。 |
+| `active` | 啟用此 provider。 |
+| `clientId` / `clientSecret` | server 端（機密）client，對應 IdP 上註冊的那組。 |
+| `userIdentifier` / `userIdentifierInLdapFormat` | 用 token 的哪個 claim 對應到 Domino 身分（見階段六）。 |
+
+> 一句話：**要在登入下拉看到它 = `adminui` 區塊（列出它）＋ `providerUrl` 連得到（載入成功）**，兩者缺一不可。
+
 ![Domino console 重啟 restapi](images/04-restapi-restart.png)
 
 ### 🕳️ 踩雷點 1：缺 `adminui` 區塊 → 導向 `/admin/undefined`
