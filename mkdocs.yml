@@ -1,0 +1,56 @@
+site_name: DRAPI + Keycloak OIDC 實作筆記
+site_description: HCL Domino REST API 透過 Keycloak 的 OIDC 登入實作、憑證信任與 certstore 研究
+repo_url: https://github.com/bryanHsiao/drapi-oidc-keycloak
+repo_name: bryanHsiao/drapi-oidc-keycloak
+
+docs_dir: .
+exclude_docs: |
+  mkdocs.yml
+  keepconfig.d/
+  certs/
+  certstore/keyfile.*
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切換深色
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切換淺色
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - toc.integrate
+    - content.code.copy
+    - search.highlight
+    - search.suggest
+
+nav:
+  - 首頁（完整重現）: README.md
+  - HTTPS + 主機名設定: HTTPS-主機名設定.md
+  - 憑證信任重現與排查: 憑證信任重現與排查.md
+  - certstore 能耐研究: certstore/README.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
