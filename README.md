@@ -11,7 +11,7 @@
 | [`環境與架構.md`](環境與架構.md) | 測試環境與網路架構圖 |
 | [`HTTPS-主機名設定.md`](HTTPS-主機名設定.md) | DRAPI 改用 HTTPS + 主機名（PEM 憑證、Keycloak redirect/CORS 連動） |
 | [`憑證信任重現與排查.md`](憑證信任重現與排查.md) | **重點**：重現 `Error fetching token`，證實 DRAPI 對外信任 = **JVM cacerts** |
-| [`certstore/README.md`](certstore/README.md) | certstore.nsf 能耐實測：DRAPI/Domino HTTP inbound 可用、outbound 不行；HTTP 需 FQDN |
+| [`certstore/README.md`](certstore/README.md) | certstore.nsf 整合實測：DRAPI/Domino HTTP inbound 可用、outbound 不行；HTTP 需 FQDN |
 
 > 📐 測試環境與網路架構圖見 [環境與架構](環境與架構.md)。
 

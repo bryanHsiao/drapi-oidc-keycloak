@@ -1,4 +1,4 @@
-# certstore.nsf 能做到哪裡 — 實測研究紀錄
+# certstore.nsf 整合實測
 
 > 目的：釐清 Domino 12 的 Certificate Manager（`certstore.nsf`）在 **DRAPI** 與 **Domino 自身 HTTP** 上，
 > 各自能不能取代傳統的憑證檔（`.pem` / `.kyr`），以及萬用憑證夠不夠用。
