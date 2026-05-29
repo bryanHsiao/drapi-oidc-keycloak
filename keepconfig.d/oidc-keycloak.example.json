@@ -1,0 +1,16 @@
+{
+  "oidc": {
+    "keycloak-drapi": {
+      "active": true,
+      "providerUrl": "http://172.21.200.31:8080/realms/drapi",
+      "clientId": "Domino",
+      "clientSecret": "<YOUR_CLIENT_SECRET>",
+      "userIdentifier": "email",
+      "userIdentifierInLdapFormat": false,
+      "adminui": {
+        "active": true,
+        "client_id": "keepadminui"
+      }
+    }
+  }
+}

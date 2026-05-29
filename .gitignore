@@ -1,0 +1,15 @@
+# 本機測試用、含真實 client secret，勿上傳
+keepconfig.d/oidc-keycloak.json
+
+# 憑證與私鑰，勿上傳
+certs/
+
+# certstore 研究：Domino HTTP keyfile（含私鑰），勿上傳（README 可上傳）
+certstore/keyfile.kyr
+certstore/keyfile.sth
+
+# 提問者協助內容（本機保留，不上傳）
+社群協助/
+
+# 本機工具設定
+.claude/settings.local.json

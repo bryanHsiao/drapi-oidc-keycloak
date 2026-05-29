@@ -1,0 +1,4 @@
+{
+  "TLSCertStore": true,
+  "TLSCertStoreName": ["*.domino.com.tw"]
+}
