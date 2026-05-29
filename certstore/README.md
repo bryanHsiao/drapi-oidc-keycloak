@@ -71,7 +71,10 @@ Server document（非 Internet Sites）ports 的 TLS 設定，原本綁 `keyfile
 
 ### 目前狀態
 - Domino HTTP(443) 與 DRAPI(8880) **都改由 certstore.nsf 供憑證**，Domino data 目錄已無 `keyfile.kyr`。
-- server document 的「TLS 金鑰檔名」欄位仍寫 `keyfile.kyr`，但檔案已不在 → 由 certstore（FQDN 比對）接手。
+- server document 的「TLS 金鑰檔名」欄位**已清空**（留空）→ Domino HTTP 直接以本機 FQDN 從 certstore 取憑證，運作正常。
+
+> 📌 補充澄清：稍早測試時「清空欄位 → 443 失敗」，是因為**那時 certstore 只有萬用 `*.domino.com.tw`、還沒加 FQDN**。
+> 一旦 credential 的 Host names 含 FQDN（`ldat05.domino.com.tw`），**欄位留空即可**，certstore 就接手——比留著失效的 `keyfile.kyr` 字串更乾淨。
 
 ### 萬一要還原成 kyr（certstore 出問題時的退路）
 1. 把本資料夾的 `keyfile.kyr`、`keyfile.sth` 複製回 `C:\HCL\Domino1202\Data\`
