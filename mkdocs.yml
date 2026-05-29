@@ -28,7 +28,7 @@ theme:
     - search.suggest
 
 nav:
-  - 首頁（完整重現）: README.md
+  - OIDC 登入完整重現: README.md
   - HTTPS + 主機名設定: HTTPS-主機名設定.md
   - 憑證信任重現與排查: 憑證信任重現與排查.md
   - certstore 能耐研究: certstore/README.md
