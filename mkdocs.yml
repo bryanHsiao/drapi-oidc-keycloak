@@ -20,11 +20,10 @@ theme:
         icon: material/weather-sunny
         name: 切換淺色
   features:
-    - navigation.sections
-    - navigation.top
-    - navigation.tracking
-    - toc.integrate
-    - content.code.copy
+    - navigation.top       # 回到頂部按鈕
+    - navigation.tracking  # 捲動時更新網址錨點
+    - toc.follow           # 右側「本頁目錄」跟著捲動
+    - content.code.copy    # 程式碼一鍵複製
     - search.highlight
     - search.suggest
 
