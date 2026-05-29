@@ -14,6 +14,15 @@
 | **Domino HTTP inbound** | Domino web HTTPS (443) | ✅ | credential 的 **Host names 必須含本機 FQDN**（`ldat05.domino.com.tw`）；**只有萬用不夠** |
 | **DRAPI outbound** | 信任外部 IdP（ADFS/Keycloak） | ❌ | 不讀 certstore，只吃 **JVM truststore**（見 `../憑證信任重現與排查.md`） |
 
+```mermaid
+flowchart TD
+    Q{"憑證用途？"}
+    Q -->|"自己開 HTTPS<br/>(inbound)"| IN["certstore.nsf ✅"]
+    Q -->|"信任外部 IdP<br/>(outbound)"| OUT["JVM truststore ✅<br/>certstore ❌"]
+    IN --> D1["DRAPI 8880<br/>TLSCertStoreName 指名<br/>→ 萬用可"]
+    IN --> D2["Domino HTTP 443<br/>拿本機 FQDN 查<br/>→ credential 須含 FQDN（萬用不夠）"]
+```
+
 **一句話：**
 - inbound（自己當 server）→ certstore 可以；
 - outbound（信任別人）→ 只能 JVM truststore。
