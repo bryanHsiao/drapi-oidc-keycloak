@@ -23,6 +23,12 @@ jobs:
         with:
           python-version: "3.x"
       - run: pip install mkdocs-material
+      - name: Assemble docs into _docs/
+        run: |
+          mkdir -p _docs/certstore
+          cp README.md "HTTPS-主機名設定.md" "憑證信任重現與排查.md" _docs/
+          cp certstore/README.md _docs/certstore/
+          cp -r images _docs/
       - run: mkdocs build --site-dir "$RUNNER_TEMP/site"
       - uses: actions/upload-pages-artifact@v3
         with:

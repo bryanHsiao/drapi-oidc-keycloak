@@ -13,3 +13,6 @@ certstore/keyfile.sth
 
 # 本機工具設定
 .claude/settings.local.json
+
+# CI 暫存組裝目錄
+_docs/
