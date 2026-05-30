@@ -33,6 +33,7 @@ nav:
   - HTTPS + 主機名設定: HTTPS-主機名設定.md
   - 憑證信任重現與排查: 憑證信任重現與排查.md
   - certstore.nsf 整合實測: certstore/README.md
+  - 術語對照: 術語對照.md
 
 markdown_extensions:
   - admonition
@@ -49,3 +50,14 @@ markdown_extensions:
 
 plugins:
   - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: zh-TW
+          default: true
+          name: 中文
+        - locale: en
+          name: English

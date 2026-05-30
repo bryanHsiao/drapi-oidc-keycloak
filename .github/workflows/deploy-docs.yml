@@ -22,11 +22,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - run: pip install mkdocs-material
+      - run: pip install mkdocs-material mkdocs-static-i18n
       - name: Assemble docs into _docs/
         run: |
           mkdir -p _docs/certstore
-          cp README.md "環境與架構.md" "HTTPS-主機名設定.md" "憑證信任重現與排查.md" _docs/
+          cp README.md README.en.md "環境與架構.md" "HTTPS-主機名設定.md" "憑證信任重現與排查.md" "術語對照.md" _docs/
           cp certstore/README.md _docs/certstore/
           cp -r images _docs/
       - run: mkdocs build --site-dir "$RUNNER_TEMP/site"
