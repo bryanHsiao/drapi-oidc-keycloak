@@ -1,4 +1,5 @@
 site_name: DRAPI + Keycloak OIDC 實作筆記
+site_url: https://bryanhsiao.github.io/drapi-oidc-keycloak/
 site_description: HCL Domino REST API 透過 Keycloak 的 OIDC 登入實作、憑證信任與 certstore 研究
 repo_url: https://github.com/bryanHsiao/drapi-oidc-keycloak
 repo_name: bryanHsiao/drapi-oidc-keycloak
