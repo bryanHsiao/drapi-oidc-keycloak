@@ -1,0 +1,17 @@
+{#-
+  自訂語言切換：兩種語言時不用下拉，直接顯示「另一種語言」的連結，點了就換。
+-#}
+{% if config.extra.alternate %}
+  {% set current = config.theme.language %}
+  {% for alt in config.extra.alternate %}
+    {% if alt.lang != current %}
+      <a
+        href="{{ alt.link | url }}"
+        hreflang="{{ alt.lang }}"
+        title="{{ alt.name }}"
+        class="md-header__button"
+        style="width:auto;height:auto;margin:auto .3rem;padding:.15rem .65rem;color:var(--md-primary-bg-color);border:1px solid currentColor;border-radius:1rem;font-size:.72rem;font-weight:700;line-height:1.4;white-space:nowrap;opacity:.9;"
+      >🌐 {{ alt.name }}</a>
+    {% endif %}
+  {% endfor %}
+{% endif %}
