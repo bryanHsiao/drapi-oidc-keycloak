@@ -63,3 +63,10 @@ plugins:
           name: 中文
         - locale: en
           name: English
+          nav_translations:
+            實作步驟（SOP）: Steps (SOP)
+            環境與架構: Environment & Architecture
+            HTTPS + 主機名設定: HTTPS + Hostname
+            憑證信任重現與排查: Cert Trust — Reproduce & Diagnose
+            certstore.nsf 整合實測: certstore.nsf Hands-on
+            術語對照: Glossary

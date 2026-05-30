@@ -26,8 +26,13 @@ jobs:
       - name: Assemble docs into _docs/
         run: |
           mkdir -p _docs/certstore
-          cp README.md README.en.md "環境與架構.md" "HTTPS-主機名設定.md" "憑證信任重現與排查.md" "術語對照.md" _docs/
-          cp certstore/README.md _docs/certstore/
+          cp README.md README.en.md \
+             "環境與架構.md" "環境與架構.en.md" \
+             "HTTPS-主機名設定.md" "HTTPS-主機名設定.en.md" \
+             "憑證信任重現與排查.md" "憑證信任重現與排查.en.md" \
+             "術語對照.md" "術語對照.en.md" \
+             _docs/
+          cp certstore/README.md certstore/README.en.md _docs/certstore/
           cp -r images _docs/
       - run: mkdocs build --site-dir "$RUNNER_TEMP/site"
       - uses: actions/upload-pages-artifact@v3
